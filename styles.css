@@ -490,7 +490,7 @@ the website, in dark theme
   transform: translateY(-0.25rem);
 }
 
-/*=============== PRODUCTS ===============*/
+/*=============== projects ===============*/
 .product__description {
   text-align: center;
 }
@@ -529,7 +529,6 @@ the website, in dark theme
 }
 
 .product__button {
-  
   position: absolute;
   right: 0;
   bottom: 0;
@@ -1068,5 +1067,17 @@ the website, in dark theme
 
   .scrollup {
     right: 3rem;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .product__circle {
+    width: 110px;
+    height: 110px;
+    left: 35%;
+    top: 5%;
+  }
+  .product__title {
+    display: none;
   }
 }
