@@ -54,37 +54,6 @@ function scrollUp() {
 }
 window.addEventListener("scroll", scrollUp);
 
-/*=============== THEME TOGGLE ===============*/
-const themeButton = document.getElementById("theme-button");
-const darkThemeClass = "dark-theme";
-const iconThemeClass = "ri-sun-line";
-
-const storedTheme = localStorage.getItem("selected-theme");
-const storedIcon = localStorage.getItem("selected-icon");
-
-const getCurrentTheme = () =>
-  document.body.classList.contains(darkThemeClass) ? "dark" : "light";
-const getCurrentIcon = () =>
-  themeButton.classList.contains(iconThemeClass)
-    ? "ri-moon-line"
-    : "ri-sun-line";
-
-if (storedTheme) {
-  document.body.classList[storedTheme === "dark" ? "add" : "remove"](
-    darkThemeClass,
-  );
-  themeButton.classList[storedIcon === "ri-moon-line" ? "add" : "remove"](
-    iconThemeClass,
-  );
-}
-
-themeButton.addEventListener("click", () => {
-  document.body.classList.toggle(darkThemeClass);
-  themeButton.classList.toggle(iconThemeClass);
-  localStorage.setItem("selected-theme", getCurrentTheme());
-  localStorage.setItem("selected-icon", getCurrentIcon());
-});
-
 /*=============== SCROLL REVEAL ===============*/
 const sr = ScrollReveal({
   origin: "top",
