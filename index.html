@@ -582,7 +582,14 @@
 
             <!-- Small simple button -->
             <button id="send-btn" class="button button--flex" type="submit">
-              Send Message
+              <span
+                class="button__spinner"
+                id="send-spinner"
+                style="display: none"
+              >
+              </span>
+              <span data-translate="contact.sendBtn">Send Message</span>
+              <i class="ri-arrow-right-up-line" id="send-icon"></i>
             </button>
           </form>
         </div>

@@ -115,6 +115,9 @@ if (techBoxElement) {
 }
 /*=============== CONTACT FORM (WhatsApp) ===============*/
 const contactForm = document.getElementById("contact-form");
+const sendBtn = document.getElementById("send-btn");
+const sendSpinner = document.getElementById("send-spinner");
+const sendIcon = document.getElementById("send-icon");
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -128,18 +131,29 @@ contactForm.addEventListener("submit", (e) => {
     return;
   }
 
+  // Show loading state
+  sendBtn.classList.add("button--loading");
+  sendSpinner.style.display = "inline-block";
+  sendIcon.style.display = "none";
+
   const phoneNumber = "201068480441";
   const timestamp = new Date().toLocaleString();
 
   const whatsappMessage = `New Client Message\n\nName: ${fullName}\nPhone: ${phone}\nDate: ${timestamp}\n\nMessage:\n${message}`;
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-    whatsappMessage,
-  )}`;
+  // Delay slightly to show loading before opening WhatsApp
+  setTimeout(() => {
+    window.open(whatsappURL, "_blank");
 
-  window.open(whatsappURL, "_blank");
+    // Reset button state
+    sendBtn.classList.remove("button--loading");
+    sendSpinner.style.display = "none";
+    sendIcon.style.display = "inline-block";
 
-  document.getElementById("fullName").value = "";
-  document.getElementById("phone").value = "";
-  document.getElementById("message").value = "";
+    // Clear form fields
+    document.getElementById("fullName").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("message").value = "";
+  }, 1500);
 });
