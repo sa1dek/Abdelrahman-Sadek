@@ -4,344 +4,311 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- ---------- SEO ---------- -->
+    <title>Abdelrahman - Web Developer</title>
+    <meta
+      name="description"
+      content="Abdelrahman is a web developer specialising in modern, high-performing websites and digital solutions."
+    />
+    <meta name="theme-color" content="#171717" />
+    <meta name="author" content="Abdelrahman" />
+
+    <!-- ---------- Open Graph ---------- -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Abdelrahman - Web Developer" />
+    <meta
+      property="og:description"
+      content="Modern, high-performing websites and digital solutions."
+    />
+    <meta property="og:image" content="assets/img/Logo-transparent.png" />
+
+    <!-- ---------- Icons & fonts ---------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
     />
     <link
       rel="shortcut icon"
       href="assets/img/Logo-transparent.png"
       type="image/x-icon"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="assets/css/styles.css" />
-
-    <title>Abdelrahman - Web Developer</title>
   </head>
+
   <body>
-    <!--==================== HEADER ====================-->
+    <!-- ==========================================================
+         HEADER
+         ========================================================== -->
     <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Abdelrahman</a>
+      <nav class="nav container" aria-label="Primary">
+        <a href="#home" class="nav__logo" aria-label="Back to top">
+          Abdelrahman<span class="nav__logo-mark">.</span>
+        </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">About</a>
-            </li>
-            <li class="nav__item">
-              <a href="#technologies" class="nav__link">Skills</a>
-            </li>
-            <li class="nav__item">
-              <a href="#featured" class="nav__link">Projects</a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">Contact</a>
-            </li>
+            <li class="nav__item"><a href="#home" class="nav__link nav__link--active">Home</a></li>
+            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+            <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+            <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+            <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
           </ul>
 
-          <div class="nav__close" id="nav-close">
-            <i class="ri-close-line"></i>
-          </div>
+          <button type="button" class="nav__close" id="nav-close" aria-label="Close navigation menu">
+            <i class="ri-close-line" aria-hidden="true"></i>
+          </button>
         </div>
 
-        <div class="nav__btns">
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
+        <button
+          type="button"
+          class="nav__toggle"
+          id="nav-toggle"
+          aria-label="Open navigation menu"
+          aria-controls="nav-menu"
+          aria-expanded="false"
+        >
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
       </nav>
     </header>
 
     <main class="main">
-      <!--==================== HOME ====================-->
+      <!-- ========================================================
+           HERO
+           ======================================================== -->
       <section class="home" id="home">
         <div class="home__container container grid">
           <img
             src="assets/img/my-photo3.png"
-            alt="Abdelrahman portrait"
-            class="home__img"
+            alt="Portrait of Abdelrahman"
+            class="home__img" data-reveal="fade-up"
+            width="350"
+            height="350"
           />
 
-          <div class="home__data">
+          <div class="home__data" data-reveal="fade-up-lg">
             <h1 class="home__title">I'm Abdelrahman</h1>
             <p class="home__description">
-              I am a professional web developer specializing in building modern,
-              high-performing websites.
+              A professional web developer building modern, high-performing
+              websites and digital solutions.
             </p>
-            <a href="#about" class="button button--flex">
-              About Me <i class="ri-arrow-right-down-line button__icon"></i>
+            <a href="#about" class="button">
+              About Me <i class="ri-arrow-right-down-line button__icon" aria-hidden="true"></i>
             </a>
           </div>
 
+          <!-- Vertical side rail. Absolutely positioned via CSS so it stays on
+               the hero's right edge at every width and never enters flow. -->
           <div class="home__social">
-            <span class="home__social-follow">Follow Us</span>
+            <span class="home__social-label">Follow Us</span>
             <div class="home__social-links">
               <a
                 href="https://www.instagram.com/3bdelrahman_moh3med/"
-                target="_blank"
                 class="home__social-link"
-                aria-label="Instagram"
-                ><i class="ri-instagram-line"></i
-              ></a>
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abdelrahman on Instagram"
+              ><i class="ri-instagram-line" aria-hidden="true"></i></a>
               <a
                 href="https://github.com/sa1dek"
-                target="_blank"
                 class="home__social-link"
-                aria-label="GitHub"
-                ><i class="ri-github-fill"></i
-              ></a>
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abdelrahman on GitHub"
+              ><i class="ri-github-fill" aria-hidden="true"></i></a>
               <a
                 href="https://www.linkedin.com/in/abdelrahman-mohamed-6aa009375/"
-                target="_blank"
                 class="home__social-link"
-                aria-label="LinkedIn"
-                ><i class="ri-linkedin-fill"></i
-              ></a>
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abdelrahman on LinkedIn"
+              ><i class="ri-linkedin-fill" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </section>
 
-      <!--==================== ABOUT ====================-->
-      <section class="about section container" id="about">
+      <!-- ========================================================
+           ABOUT
+           ======================================================== -->
+      <section class="about section container" id="about" aria-labelledby="about-title">
         <div class="about__container grid">
           <img
             src="assets/img/my-photo2.png"
-            alt="About illustration"
-            class="about__img"
+            alt="Abdelrahman working at his desk"
+            class="about__img" data-reveal="fade-up"
+            width="380"
+            height="380"
+            loading="lazy"
+            decoding="async"
           />
 
-          <div class="about__data">
-            <h2 class="section__title about__title">Who am I?</h2>
+          <div class="about__data" data-reveal="fade-up-lg">
+            <h2 class="section__title about__title" id="about-title">Who am I?</h2>
             <p class="about__description">
-              Artificial Intelligence student and passionate web developer, with
-              extensive hands-on experience building and designing numerous
-              modern, high-performing websites and digital solutions.
+              An Artificial Intelligence student and passionate web developer,
+              with hands-on experience designing and building modern,
+              high-performing websites and digital solutions.
             </p>
 
-            <div class="about__details">
-              <p class="about__details-description">
-                <i class="ri-checkbox-fill about__details-icon"></i>Can you
-                handle complex, custom-built web solutions?
-              </p>
-              <p class="about__details-description">
-                <i class="ri-checkbox-fill about__details-icon"></i>Do you blend
-                advanced AI logic with modern web development?
-              </p>
-              <p class="about__details-description">
-                <i class="ri-checkbox-fill about__details-icon"></i>Are you
-                ready to bring high-end projects to life?
-              </p>
-            </div>
+            <ul class="about__details">
+              <li class="about__details-item">
+                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                Handle complex, custom-built web solutions.
+              </li>
+              <li class="about__details-item">
+                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                Blend advanced AI logic with modern web development.
+              </li>
+              <li class="about__details-item">
+                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                Ready to bring high-end projects to life.
+              </li>
+            </ul>
 
-            <a href="#technologies" class="button--link button--flex"
-              >View Skills <i class="ri-arrow-right-down-line button__icon"></i
-            ></a>
+            <a href="#skills" class="button--link">
+              View Skills <i class="ri-arrow-right-down-line button__icon" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </section>
 
-      <!--==================== SKILLS ====================-->
-      <section class="tech-section section container" id="technologies">
-        <div class="tech-box" id="tech-box">
-          <h2 class="section__title-center">My Skills</h2>
-          <div class="tech-grid">
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/html.svg" alt="HTML5 logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">HTML</span>
-                  <span class="tech-item__percent" data-target="95">0%</span>
+      <!-- ========================================================
+           SKILLS
+           ======================================================== -->
+      <section class="skills section container" id="skills" aria-labelledby="skills-title">
+        <div class="skills__panel glass" data-reveal="fade-up-lg">
+          <h2 class="section__title-center" id="skills-title">My Skills</h2>
+
+          <div class="skills__grid">
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/html.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">HTML</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="95"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="95"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/css.svg" alt="CSS3 logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">CSS</span>
-                  <span class="tech-item__percent" data-target="90">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/css.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">CSS</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="90"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="90"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img
-                  src="assets/img/tools/javascript.svg"
-                  alt="JavaScript logo"
-                />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">JavaScript</span>
-                  <span class="tech-item__percent" data-target="85">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/javascript.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">JavaScript</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="85"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="85"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/java.svg" alt="Java logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">Java</span>
-                  <span class="tech-item__percent" data-target="90">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/java.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">Java</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="90"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="90"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/c.svg" alt="C logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">C</span>
-                  <span class="tech-item__percent" data-target="55">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/C.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">C</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="55"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="55"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/arduino.svg" alt="Arduino logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">Arduino</span>
-                  <span class="tech-item__percent" data-target="85">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/arduino.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">Arduino</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="85"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="85"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/react.svg" alt="React logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">React</span>
-                  <span class="tech-item__percent" data-target="65">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/react.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">React</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="65"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="65"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/database.svg" alt="Database logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">Database</span>
-                  <span class="tech-item__percent" data-target="60">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/database.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">Database</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="60"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="60"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/git.svg" alt="Git logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">Git</span>
-                  <span class="tech-item__percent" data-target="55">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/git.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">Git</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="55"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="55"></div>
                 </div>
               </div>
             </div>
 
-            <div class="tech-item">
-              <div class="tech-item__icon">
-                <img src="assets/img/tools/github.svg" alt="GitHub logo" />
-              </div>
-              <div class="tech-item__content">
-                <div class="tech-item__header">
-                  <span class="tech-item__name">GitHub</span>
-                  <span class="tech-item__percent" data-target="95">0%</span>
+            <div class="skills__item">
+              <div class="skills__icon"><img src="assets/img/tools/github.svg" alt="" width="40" height="40" /></div>
+              <div class="skills__body">
+                <div class="skills__meta">
+                  <span class="skills__name">GitHub</span>
+                  <span class="skills__value">0%</span>
                 </div>
-                <div class="tech-item__bar">
-                  <div
-                    class="tech-item__progress"
-                    style="width: 0%"
-                    data-width="95"
-                  ></div>
+                <div class="skills__bar">
+                  <div class="skills__progress" data-target="95"></div>
                 </div>
               </div>
             </div>
@@ -349,275 +316,307 @@
         </div>
       </section>
 
-      <!--==================== FEATURED PROJECTS ====================-->
-      <section class="featured-projects section container" id="featured">
-        <h2 class="featured-projects__title">Some of My Recent Work</h2>
+      <!-- ========================================================
+           PROJECTS - horizontal rectangular cards
+           ======================================================== -->
+      <section class="projects section container" id="projects" aria-labelledby="projects-title">
+        <h2 class="projects__title" id="projects-title">Some of My Recent Work</h2>
 
-        <div class="featured-projects__grid">
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+        <div class="projects__grid">
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="assets/img/projects/qr-code-generator.jpg"
-                alt="Dashboard Web"
+                alt="QR code generator interface"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">01</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">Qr Code Generator</h3>
-              <p class="project-card__description">
-                A modern web platform for generating and managing dynamic QR
-                codes with real-time routing and analytics.
-              </p>
-              <a
-                href="https://qr-code-generator-gules-iota.vercel.app/"
-                class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">QR Code Generator</h3>
+              <p class="project-card__text">Dynamic QR codes with live tracking and analytics.</p>
+              <div class="project-card__footer">
+                <a
+                  href="https://qr-code-generator-gules-iota.vercel.app/"
+                  class="project-card__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project <i class="ri-eye-line" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="assets/img/projects/cv-website.jpg"
-                alt="CV Website"
+                alt="CV website preview"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">02</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">CV Website</h3>
-              <p class="project-card__description">
-                Secure authentication system with multi-factor verification and
-                session management.
-              </p>
-              <a
-                href="https://sa1dek.github.io/CV-Abdelrahman/"
-                class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">CV Website</h3>
+              <p class="project-card__text">A responsive CV with a one-click PDF export.</p>
+              <div class="project-card__footer">
+                <a
+                  href="https://sa1dek.github.io/CV-Abdelrahman/"
+                  class="project-card__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project <i class="ri-eye-line" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="assets/img/projects/organizational-details.png"
-                alt="Online Exam System"
+                alt="Online exam system dashboard"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">03</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">Online Exam System</h3>
-              <p class="project-card__description">
-                A full-featured online examination platform with automatic
-                grading and question bank.
-              </p>
-              <a
-                href="https://relief-hostel.vercel.app/"
-                class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Online Exam System</h3>
+              <p class="project-card__text">Timed online exams with automatic grading.</p>
+              <div class="project-card__footer">
+                <a
+                  href="https://relief-hostel.vercel.app/"
+                  class="project-card__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project <i class="ri-eye-line" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="assets/img/projects/watch-website-store.jpg"
-                alt="Watch Website Store"
+                alt="Watch storefront preview"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">04</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">Watch Website Store</h3>
-              <p class="project-card__description">
-                An e-commerce platform for selling watches online with a modern
-                design and seamless user experience.
-              </p>
-              <a
-                href="https://sa1dek.github.io/Digital-Watch-Landing-Page/"
-                class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Watch Store</h3>
+              <p class="project-card__text">A modern storefront for browsing and selling watches.</p>
+              <div class="project-card__footer">
+                <a
+                  href="https://sa1dek.github.io/Digital-Watch-Landing-Page/"
+                  class="project-card__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project <i class="ri-eye-line" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+          <!-- No public URL: rendered as a muted badge rather than a dead link. -->
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="https://i.postimg.cc/FHrzHGBG/JP-Java.jpg"
-                alt="Java Programming"
+                alt="Java programming project"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">05</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">Java Programming</h3>
-              <p class="project-card__description">
-                Desktop application built with Java Swing for inventory and
-                sales management.
-              </p>
-              <a href="#" class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Java Programming</h3>
+              <p class="project-card__text">A Java Swing desktop app for inventory and sales.</p>
+              <div class="project-card__footer">
+                <span class="project-card__badge">Private project</span>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-card__image-wrapper">
+          <article class="project-card glass" data-reveal="fade-up">
+            <div class="project-card__media">
               <img
                 src="https://i.postimg.cc/LXch4pcZ/DP-Database.jpg"
-                alt="Database Programming"
+                alt="Database programming project"
                 class="project-card__img"
+                loading="lazy"
+                decoding="async"
               />
               <span class="project-card__number">06</span>
             </div>
-            <div class="project-card__content">
-              <h3 class="project-card__name">Database Programming</h3>
-              <p class="project-card__description">
-                Relational database design and optimization for high-traffic
-                applications.
-              </p>
-              <a href="#" class="project-card__link"
-                >View Project <i class="ri-eye-line"></i
-              ></a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Database Programming</h3>
+              <p class="project-card__text">Relational schema design and query optimisation.</p>
+              <div class="project-card__footer">
+                <span class="project-card__badge">Private project</span>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      <!--==================== CONTACT ====================-->
-      <section class="contact section container" id="contact">
+      <!-- ========================================================
+           CONTACT
+           ======================================================== -->
+      <section class="contact section container" id="contact" aria-labelledby="contact-title">
         <div class="contact__container grid">
-          <div class="contact__box">
-            <h2 class="section__title">Create your website <br />with me.</h2>
+          <div class="contact__box" data-reveal="fade-up-lg">
+            <h2 class="section__title" id="contact-title">Create your website<br />with me.</h2>
+
             <div class="contact__data">
               <div class="contact__information">
                 <h3 class="contact__subtitle">Call Me</h3>
-                <span class="contact__description"
-                  ><i class="ri-phone-line contact__icon"></i
-                  >+201068480441</span
-                >
+                <a href="tel:+201068480441" class="contact__value">
+                  <i class="ri-phone-line contact__icon" aria-hidden="true"></i>
+                  +201068480441
+                </a>
               </div>
+
               <div class="contact__information">
                 <h3 class="contact__subtitle">Email Me</h3>
-                <span class="contact__description"
-                  ><i class="ri-mail-line contact__icon"></i
-                  >abdelrahman20e@gmail.com</span
-                >
+                <a href="mailto:abdelrahman20e@gmail.com" class="contact__value">
+                  <i class="ri-mail-line contact__icon" aria-hidden="true"></i>
+                  abdelrahman20e@gmail.com
+                </a>
               </div>
             </div>
           </div>
 
-          <form action="" class="contact__form" id="contact-form">
-            <div class="contact__inputs">
-              <!-- Full Name -->
-              <div class="contact__content">
+          <!-- No `action`: submission is intercepted by main.js and forwarded
+               to WhatsApp, so the page is never reloaded. -->
+          <form class="contact__form glass" id="contact-form" novalidate data-reveal="fade-up-lg">
+            <div class="contact__fields">
+              <div class="contact__field">
                 <input
                   type="text"
                   id="fullName"
                   name="fullName"
-                  autocomplete="name"
                   class="contact__input"
+                  placeholder=" "
+                  autocomplete="name"
+                  aria-label="Full Name"
                   required
                 />
                 <label for="fullName" class="contact__label">Full Name</label>
               </div>
 
-              <!-- Phone Number -->
-              <div class="contact__content">
+              <div class="contact__field">
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
-                  autocomplete="tel"
                   class="contact__input"
+                  placeholder=" "
+                  autocomplete="tel"
+                  inputmode="tel"
+                  aria-label="Phone Number"
                   required
                 />
                 <label for="phone" class="contact__label">Phone Number</label>
               </div>
 
-              <!-- Message -->
-              <div class="contact__content contact__area">
+              <div class="contact__field contact__field--area">
                 <textarea
-                  autocomplete="message"
                   id="message"
                   name="message"
                   class="contact__input"
+                  placeholder=" "
+                  autocomplete="message"
+                  aria-label="Message"
                   required
                 ></textarea>
                 <label for="message" class="contact__label">Message</label>
               </div>
             </div>
 
-            <!-- Small simple button -->
-            <button id="send-btn" class="button button--flex" type="submit">
-              <span
-                class="button__spinner"
-                id="send-spinner"
-                style="display: none"
-              >
-              </span>
-              <span data-translate="contact.sendBtn">Send Message</span>
-              <i class="ri-arrow-right-up-line" id="send-icon"></i>
+            <button class="button" id="send-btn" type="submit">
+              <span class="button__spinner" aria-hidden="true"></span>
+              <span>Send Message</span>
+              <i class="ri-arrow-right-up-line button__icon" aria-hidden="true"></i>
             </button>
           </form>
         </div>
       </section>
     </main>
 
-    <!--==================== FOOTER ====================-->
+    <!-- ==========================================================
+         FOOTER
+         ========================================================== -->
     <footer class="footer section">
       <div class="footer__container container grid">
-        <div class="footer__content">
-          <h3 class="footer__title">Our Address</h3>
-          <ul class="footer__data">
-            <li class="footer__information">Giza</li>
-            <li class="footer__information">El-Mohandseen</li>
-            <li class="footer__information">35JV+JH</li>
+        <div class="footer__content" data-reveal="fade-up">
+          <h2 class="footer__title">Our Address</h2>
+          <ul class="footer__list">
+            <li class="footer__text">Giza</li>
+            <li class="footer__text">El-Mohandseen</li>
+            <li class="footer__text">35JV+JH</li>
           </ul>
         </div>
 
-        <div class="footer__content">
-          <h3 class="footer__title">Contact Us</h3>
-          <ul class="footer__data">
-            <li class="footer__information">+201068480441</li>
-            <div class="footer__social">
-              <a
-                href="https://www.instagram.com/3bdelrahman_moh3med/"
-                class="footer__social-link"
-                aria-label="Instagram"
-                ><i class="ri-instagram-line"></i
-              ></a>
-              <a
-                href="https://github.com/sa1dek"
-                class="footer__social-link"
-                aria-label="GitHub"
-                ><i class="ri-github-fill"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/in/abdelrahman-mohamed-6aa009375/"
-                class="footer__social-link"
-                aria-label="LinkedIn"
-                ><i class="ri-linkedin-fill"></i
-              ></a>
-            </div>
+        <div class="footer__content" data-reveal="fade-up">
+          <h2 class="footer__title">Contact Us</h2>
+          <ul class="footer__list">
+            <li class="footer__text">
+              <a href="tel:+201068480441">+201068480441</a>
+            </li>
+            <li class="footer__text">
+              <a href="mailto:abdelrahman20e@gmail.com">abdelrahman20e@gmail.com</a>
+            </li>
           </ul>
+
+          <div class="footer__social">
+            <a
+              href="https://www.instagram.com/3bdelrahman_moh3med/"
+              class="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            ><i class="ri-instagram-line" aria-hidden="true"></i></a>
+            <a
+              href="https://github.com/sa1dek"
+              class="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            ><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a
+              href="https://www.linkedin.com/in/abdelrahman-mohamed-6aa009375/"
+              class="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            ><i class="ri-linkedin-fill" aria-hidden="true"></i></a>
+          </div>
         </div>
       </div>
 
-      <p class="footer__copy">&#169; Abdelrahman. Web Developer</p>
+      <p class="footer__copy">
+        &copy; <span data-current-year>2026</span> Abdelrahman. Web Developer
+      </p>
     </footer>
 
-    <a href="#" class="scrollup" id="scroll-up"
-      ><i class="ri-arrow-up-fill scrollup__icon"></i
-    ></a>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll back to top">
+      <i class="ri-arrow-up-fill" aria-hidden="true"></i>
+    </a>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

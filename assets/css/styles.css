@@ -1,20 +1,38 @@
-/* ==================================================
-   GOOGLE FONTS
-================================================== */
+/* =============================================================
+   ABDELRAHMAN — WEB DEVELOPER PORTFOLIO
+   -------------------------------------------------------------
+   TABLE OF CONTENTS
+     01. Design tokens
+     02. Reset & base
+     03. Layout primitives
+     04. Buttons
+     05. Liquid glass surfaces
+     06. Header & navigation
+     07. Hero
+     08. About
+     09. Skills
+     10. Projects
+     11. Contact
+     12. Footer
+     13. Utilities (scroll-up, scrollbar, motion)
+
+   Breakpoint scale (mobile-first, `min-width`):
+     sm  576px   md  768px   lg  992px   xl 1200px
+   ============================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* ==================================================
-   VARIABLES
-================================================== */
+/* =============================================================
+   01. DESIGN TOKENS
+   ============================================================= */
 
 :root {
   /* ---------- Layout ---------- */
-
   --header-height: 3.5rem;
+  --container-width: 968px;
+  --gutter: 2rem;
 
-  /* ---------- Colors ---------- */
-
+  /* ---------- Core palette (unchanged) ---------- */
   --body-color: #171717;
   --container-color: #202020;
 
@@ -24,13 +42,32 @@
 
   --first-color: #f15725;
   --first-color-alt: #d9471b;
-  --first-color-light: #ff8158;
-  --first-color-lighten: #2a211e;
 
   --white-color: #ffffff;
 
-  /* ---------- Typography ---------- */
+  /* ---------- Supporting neutrals ---------- */
+  --track-color: #333333;
+  --scrollbar-track: #111111;
+  --scrollbar-thumb: #3a3a3a;
+  --shadow-color: rgba(0, 0, 0, 0.18);
+  --shadow-color-deep: rgba(0, 0, 0, 0.35);
 
+  /* ---------- Liquid glass ---------- */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.055);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(241, 87, 37, 0.34);
+  --glass-blur: 12px;
+  --glass-saturate: 160%;
+  --glass-radius: 14px;
+  --glass-shadow: 0 8px 32px var(--shadow-color);
+  --glass-shadow-hover: 0 16px 40px var(--shadow-color-deep);
+
+  /* ---------- Accent glow (breathing room for the glass) ---------- */
+  --glow-primary: rgba(241, 87, 37, 0.1);
+  --glow-secondary: rgba(241, 87, 37, 0.06);
+
+  /* ---------- Typography ---------- */
   --body-font: "Poppins", sans-serif;
 
   --big-font-size: 2rem;
@@ -42,39 +79,51 @@
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
 
-  /* ---------- Font Weight ---------- */
-
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /* ---------- Spacing ---------- */
-
+  /* ---------- Spacing scale ---------- */
   --mb-0-5: 0.5rem;
-  --mb-0-75: 0.75rem;
   --mb-1: 1rem;
   --mb-1-5: 1.5rem;
   --mb-2: 2rem;
   --mb-2-5: 2.5rem;
+  --section-spacing: 5.5rem;
 
-  /* ---------- Z Index ---------- */
+  /* ---------- Radii ---------- */
+  --radius-sm: 0.5rem;
 
-  --z-tooltip: 10;
-  --z-fixed: 100;
+  /* ---------- Motion ---------- */
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.4s ease;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* ---------- Projects ---------- */
+  /* ---------- Scroll reveal ---------- */
+  --reveal-duration: 0.7s;
+  --reveal-distance: 24px;
 
-  --project-card-min-height: 280px;
-  --project-image-aspect: 16 / 10;
-  --project-content-padding: 1rem;
-  --project-number-size: 1.5rem;
-  --project-title-size: 1rem;
-  --project-desc-size: 0.8rem;
-  --project-gap: 1.5rem;
+  /* ---------- Z-index ---------- */
+  --z-navigation: 90;
+  --z-header: 100;
+  --z-floating: 110;
+
+  /* ---------- Project cards ----------
+     Mobile values are the largest of the scale: cards stack to full width
+     below 768px, so the type can afford to be bigger and more legible. */
+  --project-gap: 1.25rem;
+  --project-image-column: 38%;
+  --project-card-min-height: 160px;
+  --project-image-aspect: 16 / 9;
+  --project-content-padding: 1.25rem;
+  --project-number-size: 1.375rem;
+  --project-title-size: 1.125rem;
+  --project-desc-size: 0.938rem;
+  --project-desc-lines: 3;
 }
 
-/* ---------- Desktop Typography ---------- */
+/* ---------- Desktop type scale ---------- */
 
-@media screen and (min-width: 968px) {
+@media screen and (min-width: 992px) {
   :root {
     --big-font-size: 3.5rem;
     --h1-font-size: 2.25rem;
@@ -84,49 +133,83 @@
     --normal-font-size: 1rem;
     --small-font-size: 0.875rem;
     --smaller-font-size: 0.813rem;
+
+    --section-spacing: 8rem;
+
+    --project-gap: 1.5rem;
+    --project-card-min-height: 176px;
+    --project-content-padding: 1.5rem;
+    --project-desc-size: 0.875rem;
+    --project-title-size: 1.125rem;
   }
 }
 
-/* ==================================================
-   BASE
-================================================== */
+/* =============================================================
+   02. RESET & BASE
+   ============================================================= */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
-}
-
-body,
-button,
-input,
-textarea {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  /* Clamped at the root as well as on body. `clip` prevents horizontal
+     scrolling without creating a scroll container, so `position: sticky`
+     and `scroll-behavior` keep working. `hidden` would turn the element
+     into a scroll container and break sticky descendants. */
+  overflow-x: clip;
 }
 
 body {
   margin: var(--header-height) 0 0;
   background-color: var(--body-color);
   color: var(--text-color);
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  line-height: 1.6;
+  overflow-x: clip;
 }
 
-button,
-a {
-  cursor: pointer;
-  outline: none;
-  border: none;
-  -webkit-tap-highlight-color: transparent;
+/* Fallback for engines without `overflow: clip` (pre-Chrome 90 / Safari 16).
+   Applied only when `clip` is genuinely unavailable. */
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Ambient accent glows give the liquid glass surfaces something to
+   refract. Rendered behind all content, never interactive. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60rem 40rem at 12% 6%,
+      var(--glow-primary),
+      transparent 60%
+    ),
+    radial-gradient(
+      50rem 36rem at 88% 30%,
+      var(--glow-secondary),
+      transparent 60%
+    ),
+    radial-gradient(
+      46rem 34rem at 50% 96%,
+      var(--glow-secondary),
+      transparent 62%
+    );
 }
 
 h1,
@@ -134,6 +217,7 @@ h2,
 h3 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
+  line-height: 1.3;
 }
 
 ul {
@@ -141,6 +225,7 @@ ul {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
@@ -150,311 +235,129 @@ img {
   height: auto;
 }
 
+button,
 input,
 textarea {
-  outline: none;
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+/* Unified tap-highlight suppression: declared once, with a fallback
+   for engines that ignore the transparent keyword. */
 a,
 button,
 input,
 textarea,
-select,
+label,
 i {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
 }
 
-.nav__btns {
-  display: inline-flex;
-  align-items: center;
-  column-gap: 1rem;
+::selection {
+  background-color: var(--first-color);
+  color: var(--white-color);
 }
 
-/* ==================================================
-   REUSABLE
-================================================== */
+/* ---------- Keyboard focus (links & buttons only) ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Form controls opt out of the accent ring entirely. Their focus state is
+   communicated by the floating label rising and turning accent-coloured,
+   which is a stronger signal than a ring and does not draw a box around the
+   field. These rules must out-specify the global `:focus-visible` above. */
+input:focus,
+input:focus-visible,
+input:focus-within,
+textarea:focus,
+textarea:focus-visible,
+textarea:focus-within,
+.contact__input:focus,
+.contact__input:focus-visible {
+  outline: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* =============================================================
+   03. LAYOUT PRIMITIVES
+   ============================================================= */
+
+.container {
+  width: calc(100% - var(--gutter));
+  max-width: var(--container-width);
+  margin-inline: auto;
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: min(100% - 3rem, var(--container-width));
+  }
+}
 
 .section {
-  padding: 5.5rem 0 1rem;
+  padding-block: var(--section-spacing) var(--mb-1);
 }
 
 .section__title,
 .section__title-center {
   font-size: var(--h2-font-size);
   margin-bottom: var(--mb-2);
-  line-height: 140%;
 }
 
 .section__title-center {
   text-align: center;
 }
 
-.container {
-  width: calc(100% - 2rem);
-  max-width: 968px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .grid {
   display: grid;
 }
 
-.main {
-  overflow: hidden;
+/* Grid children default to `auto` min-width, which is the most
+   common source of unintended horizontal overflow. */
+.grid > * {
+  min-width: 0;
 }
 
-/* ==================================================
-   HEADER & NAV
-================================================== */
-
-.header {
-  width: 100%;
-  background-color: var(--body-color);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-fixed);
-
-  transition:
-    background-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.nav {
-  height: var(--header-height);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav__logo,
-.nav__toggle,
-.nav__close {
-  color: var(--title-color);
-}
-
-.nav__logo {
-  text-transform: uppercase;
-
-  font-size: 1.5rem;
-  font-weight: 600;
-
-  letter-spacing: 5px;
-
-  display: inline-flex;
-  align-items: center;
-
-  column-gap: 0.5rem;
-
-  transition: color 0.3s ease;
-}
-
-.nav__logo:hover {
-  color: var(--first-color);
-}
-
-.nav__toggle {
-  display: inline-flex;
-  font-size: 1.25rem;
-  cursor: pointer;
-}
-
-/* ---------- Mobile Menu ---------- */
-
-@media screen and (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-
-    background-color: var(--container-color);
-
-    width: min(80%, 320px);
-    height: 100dvh;
-
-    top: 0;
-    right: -100%;
-
-    padding: 4rem 0 0 2rem;
-
-    border-radius: 1rem 0 0 1rem;
-
-    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
-
-    transition: right 0.3s ease;
-
-    z-index: var(--z-fixed);
-  }
-}
-
-.nav__close {
-  font-size: 1.5rem;
-
-  position: absolute;
-
-  top: 1rem;
-  right: 1.25rem;
-
-  cursor: pointer;
-
-  transition: color 0.3s ease;
-}
-
-.nav__close:hover {
-  color: var(--first-color);
-}
-
-.nav__list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
-}
-
-.nav__link {
-  color: var(--title-color);
-  font-weight: var(--font-medium);
-
-  transition: color 0.3s ease;
-}
-
-.nav__link:hover {
-  color: var(--first-color);
-}
-
-.show-menu {
-  right: 0;
-}
-
-/* ---------- Header Scroll ---------- */
-
-.scroll-header {
-  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.25);
-}
-
-/* ---------- Active Link ---------- */
-
-.active-link {
-  position: relative;
-  color: var(--first-color);
-}
-
-.active-link::after {
-  content: "";
-
-  position: absolute;
-
-  bottom: -0.5rem;
-  left: 0;
-
-  width: 50%;
-  height: 2px;
-
-  background-color: var(--first-color);
-}
-
-/* ==================================================
-   HOME
-================================================== */
-
-.home {
-  padding: 3.5rem 0 2rem;
-}
-
-.home__container {
-  position: relative;
-  row-gap: 2rem;
-}
-
-.home__img {
-  width: 200px;
-  justify-self: center;
-}
-
-.home__title {
-  font-size: var(--big-font-size);
-  line-height: 140%;
-  margin-bottom: var(--mb-1);
-}
-
-.home__description {
-  margin-bottom: var(--mb-2-5);
-  line-height: 1.7;
-}
-
-.home__social {
-  position: absolute;
-
-  top: 2rem;
-  right: -1rem;
-
-  display: grid;
-
-  justify-items: center;
-  row-gap: 3.5rem;
-}
-
-.home__social-follow {
-  font-weight: var(--font-medium);
-  font-size: var(--smaller-font-size);
-
-  color: var(--first-color);
-
-  position: relative;
-
-  transform: rotate(90deg);
-}
-
-.home__social-follow::after {
-  content: "";
-
-  position: absolute;
-
-  width: 1rem;
-  height: 2px;
-
-  background-color: var(--first-color);
-
-  right: -45%;
-  top: 50%;
-}
-
-.home__social-links {
-  display: inline-flex;
-  flex-direction: column;
-  row-gap: 0.25rem;
-}
-
-.home__social-link {
-  font-size: 1rem;
-  color: var(--first-color);
-
-  transition: transform 0.3s ease;
-}
-
-.home__social-link:hover {
-  transform: translateX(0.25rem);
-}
-
-/* ==================================================
-   BUTTONS
-================================================== */
+/* =============================================================
+   04. BUTTONS
+   ============================================================= */
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  /* 48px minimum height keeps primary CTAs comfortably tappable. */
+  min-height: 48px;
+  padding: 0.75rem 1.75rem;
 
   background-color: var(--first-color);
   color: var(--white-color);
-
-  padding: 1rem 1.75rem;
-
-  border-radius: 0.5rem;
-
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
   font-weight: var(--font-medium);
 
   transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+    background-color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .button:hover {
@@ -463,712 +366,70 @@ i {
 }
 
 .button__icon {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .button:hover .button__icon {
   transform: translateX(0.25rem);
 }
 
-.button--flex {
+.button--link {
   display: inline-flex;
   align-items: center;
-  column-gap: 0.5rem;
-}
-
-.button--link {
+  gap: 0.5rem;
   color: var(--first-color);
   font-weight: var(--font-medium);
+}
+
+.button--link:hover {
+  color: var(--first-color-alt);
 }
 
 .button--link:hover .button__icon {
   transform: translateX(0.25rem);
 }
 
-/* ==================================================
-   ABOUT
-================================================== */
+/* ---------- Submit button ---------- */
 
-.about__container {
-  row-gap: 2rem;
-}
-
-.about__img {
-  width: 280px;
-  justify-self: center;
-}
-
-.about__title {
-  margin-bottom: var(--mb-1);
-}
-
-.about__description {
-  margin-bottom: var(--mb-2);
-  line-height: 1.7;
-}
-
-.about__details {
-  display: grid;
-  row-gap: 1rem;
-  margin-bottom: var(--mb-2-5);
-}
-
-.about__details-description {
-  display: inline-flex;
-  column-gap: 0.5rem;
-  font-size: var(--small-font-size);
-}
-
-.about__details-icon {
-  font-size: 1rem;
-  color: var(--first-color);
-  margin-top: 0.15rem;
-}
-
-/* ==================================================
-   SKILLS
-================================================== */
-
-.tech-section {
-  padding-bottom: 2rem;
-}
-
-.tech-box {
-  background-color: var(--container-color);
-
-  border: 1px solid rgba(241, 87, 37, 0.18);
-
-  border-radius: 1rem;
-
-  padding: 3rem 2rem;
-
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
-
-  transition:
-    background-color 0.4s ease,
-    border-color 0.4s ease;
-}
-
-.tech-grid {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 2rem;
-}
-
-.tech-item {
-  display: flex;
-  align-items: center;
-
-  gap: 1rem;
-}
-
-.tech-item__icon {
-  width: 40px;
-  height: 40px;
-
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 0.3s ease;
-}
-
-.tech-item__icon img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-}
-
-.tech-item:hover .tech-item__icon {
-  transform: scale(1.1);
-}
-
-.tech-item__content {
-  flex: 1;
-}
-
-.tech-item__header {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: baseline;
-
-  margin-bottom: 0.5rem;
-}
-
-.tech-item__name {
-  font-weight: var(--font-semi-bold);
-  font-size: var(--normal-font-size);
-
-  color: var(--title-color);
-}
-
-.tech-item__percent {
-  font-weight: var(--font-semi-bold);
-  font-size: var(--small-font-size);
-
-  color: var(--title-color);
-}
-
-.tech-item__bar {
-  height: 5px;
-
-  background-color: #333333;
-
-  border-radius: 10px;
-
-  overflow: hidden;
-}
-
-.tech-item__progress {
-  height: 100%;
-
-  background-color: var(--first-color);
-
-  border-radius: 10px;
-
-  width: 0%;
-
-  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* ---------- Skills Responsive ---------- */
-
-@media screen and (max-width: 992px) {
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .tech-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .tech-box {
-    padding: 2rem 1.25rem;
-  }
-}
-
-/* ==================================================
-   FEATURED PROJECTS
-================================================== */
-
-.featured-projects {
-  padding-bottom: 3rem;
-}
-
-.featured-projects__title {
-  text-align: center;
-
-  font-size: var(--h1-font-size);
-  font-weight: 700;
-
-  color: var(--title-color);
-
-  margin-bottom: 3rem;
-}
-
-.featured-projects__grid {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: var(--project-gap);
-}
-
-.project-card {
-  background-color: var(--container-color);
-
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-
-  min-height: var(--project-card-min-height);
-
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-0.4rem);
-
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-.project-card__image-wrapper {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: var(--project-image-aspect);
-
-  overflow: hidden;
-}
-
-.project-card__img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  display: block;
-
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-card__img {
-  transform: scale(1.05);
-}
-
-.project-card__number {
-  position: absolute;
-
-  top: 0.75rem;
-  left: 1rem;
-
-  font-size: var(--project-number-size);
-  font-weight: 700;
-
-  color: #ffffff;
-
-  opacity: 0.7;
-
-  z-index: 1;
-
+.button--loading {
   pointer-events: none;
-
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0.75;
 }
 
-.project-card__content {
-  padding: var(--project-content-padding);
+/* ---------- Responsive: narrower screens only trim the horizontal padding.
+   The 48px `min-height` from the base rule is deliberately preserved so the
+   touch target never drops below the recommended minimum. ---------- */
 
-  display: flex;
-  flex-direction: column;
-
-  flex: 1;
-}
-
-.project-card__name {
-  font-size: var(--project-title-size);
-
-  font-weight: var(--font-semi-bold);
-
-  color: var(--title-color);
-
-  margin-bottom: 0.5rem;
-}
-
-.project-card__description {
-  font-size: var(--project-desc-size);
-
-  color: var(--text-color);
-
-  line-height: 1.6;
-
-  margin-bottom: 1rem;
-
-  flex-grow: 1;
-}
-
-.project-card__link {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 0.5rem;
-
-  font-size: var(--small-font-size);
-
-  font-weight: var(--font-medium);
-
-  color: var(--first-color);
-
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-
-  margin-top: auto;
-
-  align-self: flex-end;
-}
-
-.project-card__link i {
-  font-size: 1.1rem;
-
-  transition: transform 0.3s ease;
-}
-
-.project-card__link:hover {
-  color: var(--first-color-alt);
-}
-
-.project-card__link:hover i {
-  transform: translateX(0.25rem);
-}
-
-/* ---------- Projects Responsive ---------- */
-
-@media screen and (max-width: 992px) {
-  .featured-projects__grid {
-    grid-template-columns: repeat(2, 1fr);
+@media screen and (max-width: 575px) {
+  .button {
+    padding-inline: 1.5rem;
   }
 }
 
-@media screen and (max-width: 576px) {
-  .featured-projects__grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+@media screen and (max-width: 360px) {
+  .button {
+    padding-inline: 1.125rem;
   }
 }
 
-/* ==================================================
-   CONTACT
-================================================== */
-
-.contact__container {
-  row-gap: 3.5rem;
-}
-
-.contact__data {
-  display: grid;
-  row-gap: 2rem;
-}
-
-.contact__subtitle {
-  font-size: var(--normal-font-size);
-
-  font-weight: var(--font-medium);
-
-  color: var(--text-color);
-
-  margin-bottom: var(--mb-0-5);
-}
-
-.contact__description {
-  display: inline-flex;
-
-  align-items: center;
-
-  column-gap: 0.5rem;
-
-  color: var(--title-color);
-
-  font-weight: var(--font-medium);
-}
-
-.contact__icon {
-  font-size: 1.25rem;
-
-  color: var(--first-color);
-}
-
-.contact__inputs {
-  display: grid;
-
-  row-gap: 2rem;
-
-  margin-bottom: var(--mb-2-5);
-}
-
-.contact__content {
-  position: relative;
-
-  height: 3rem;
-
-  border-bottom: 1px solid var(--text-color-light);
-}
-
-.contact__input {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  padding: 1rem 1rem 1rem 0;
-
-  background: transparent;
-
-  color: var(--text-color);
-
-  border: none;
-
-  outline: none;
-
-  z-index: 1;
-}
-
-.contact__label {
-  position: absolute;
-
-  top: 0.75rem;
-
-  width: 100%;
-
-  font-size: var(--small-font-size);
-
-  color: var(--text-color-light);
-
-  transition: 0.3s;
-}
-
-.contact__input:focus + .contact__label {
-  top: -0.75rem;
-  left: 0;
-
-  font-size: var(--smaller-font-size);
-
-  color: var(--first-color);
-
-  z-index: 10;
-}
-
-.contact__input:not(:placeholder-shown) + .contact__label {
-  top: -0.75rem;
-
-  font-size: var(--smaller-font-size);
-
-  z-index: 10;
-}
-
-.contact__area {
-  height: 7rem;
-}
-
-.contact__area textarea {
-  resize: none;
-}
-
-/* ==================================================
-   FOOTER
-================================================== */
-
-.footer__container {
-  row-gap: 3rem;
-}
-
-.footer__title {
-  font-size: var(--h3-font-size);
-
-  margin-bottom: var(--mb-1-5);
-}
-
-.footer__data {
-  display: grid;
-
-  row-gap: 0.75rem;
-}
-
-.footer__information {
-  font-size: var(--small-font-size);
-}
-
-.footer__social {
-  display: inline-flex;
-
-  column-gap: 0.75rem;
-}
-
-.footer__social-link {
-  font-size: 1rem;
-
-  color: var(--text-color);
-
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.footer__social-link:hover {
-  color: var(--first-color);
-
-  transform: translateY(-0.25rem);
-}
-
-.footer__copy {
-  text-align: center;
-
-  font-size: var(--smaller-font-size);
-
-  color: var(--text-color-light);
-
-  margin: 5rem 0 1rem;
-}
-
-/* ==================================================
-   SCROLL UP
-================================================== */
-
-.scrollup {
-  position: fixed;
-
-  background-color: var(--first-color);
-
-  right: 1rem;
-  bottom: -30%;
-
-  display: inline-flex;
-
-  padding: 0.5rem;
-
-  border-radius: 0.25rem;
-
-  z-index: var(--z-tooltip);
-
-  opacity: 0.8;
-
-  transition:
-    bottom 0.4s ease,
-    background-color 0.3s ease,
-    opacity 0.3s ease;
-}
-
-.scrollup__icon {
-  font-size: 1rem;
-
-  color: var(--white-color);
-}
-
-.scrollup:hover {
-  background-color: var(--first-color-alt);
-
-  opacity: 1;
-}
-
-.show-scroll {
-  bottom: 3rem;
-}
-
-/* ==================================================
-   SCROLL BAR
-================================================== */
-
-::-webkit-scrollbar {
-  width: 0.6rem;
-
-  background-color: #111111;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #3a3a3a;
-
-  border-radius: 0.5rem;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--first-color);
-}
-
-/* ==================================================
-   SMALL PHONES
-================================================== */
-
-@media screen and (max-width: 320px) {
-  .container {
-    width: calc(100% - 1.5rem);
-  }
-
-  .home__img {
-    width: 180px;
-  }
-
-  .home__title {
-    font-size: var(--h1-font-size);
-  }
-
-  .nav__logo {
-    font-size: 1.25rem;
-    letter-spacing: 3px;
-  }
-}
-
-/* ==================================================
-   TABLET / DESKTOP
-================================================== */
-
-@media screen and (min-width: 767px) {
-  body {
-    margin: 0;
-  }
-
-  .nav {
-    height: calc(var(--header-height) + 1.5rem);
-
-    column-gap: 3rem;
-  }
-
-  .nav__toggle,
-  .nav__close {
-    display: none;
-  }
-
-  .nav__list {
-    flex-direction: row;
-
-    column-gap: 3rem;
-  }
-
-  .nav__menu {
-    margin-left: auto;
-  }
-
-  .home__container,
-  .about__container,
-  .contact__container,
-  .footer__container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .home {
-    padding: 10rem 0 5rem;
-  }
-
-  .home__container {
-    align-items: center;
-  }
-
-  .home__img {
-    width: 280px;
-    order: 1;
-  }
-
-  .home__social {
-    top: 30%;
-  }
-
-  .footer__container {
-    column-gap: 3rem;
-  }
-}
-
-/* ==================================================
-   LOADING SPINNER
-================================================== */
+/* ---------- Spinner (replaces the former inline `display:none`) ---------- */
 
 .button__spinner {
+  display: none;
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffffff;
+  border-top-color: var(--white-color);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
+}
+
+.button--loading .button__spinner {
   display: inline-block;
+}
+
+.button--loading .button__icon {
+  display: none;
 }
 
 @keyframes spin {
@@ -1177,28 +438,345 @@ i {
   }
 }
 
-.button--loading {
-  pointer-events: none;
-  opacity: 0.7;
+/* =============================================================
+   05. LIQUID GLASS SURFACES
+   -------------------------------------------------------------
+   One primitive, applied by the sections that need it. A solid
+   fallback is supplied for engines without `backdrop-filter`, so the
+   surface never renders as an unreadable transparent panel.
+   ============================================================= */
+
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
 }
-/* ==================================================
-   LARGE DESKTOP
-================================================== */
+
+/* Two stacked layers keep the blur crisp without filtering the card's
+   own children (text/icons stay perfectly sharp). */
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur))
+      saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  }
+}
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass {
+    background-color: var(--container-color);
+    border-color: rgba(241, 87, 37, 0.18);
+  }
+}
+
+/* Specular top edge — the single detail that reads as "glass". */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.07),
+    transparent 42%
+  );
+  pointer-events: none;
+}
+
+/* =============================================================
+   06. HEADER & NAVIGATION
+   ============================================================= */
+
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  background-color: var(--body-color);
+  transition:
+    background-color var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.header--scrolled {
+  background-color: rgba(23, 23, 23, 0.82);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.25);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mb-2);
+  height: var(--header-height);
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--title-color);
+  font-size: 1.25rem;
+  font-weight: var(--font-semi-bold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color var(--transition-base);
+}
+
+.nav__logo:hover {
+  color: var(--first-color);
+}
+
+.nav__logo-mark {
+  color: var(--first-color);
+}
+
+.nav__toggle,
+.nav__close {
+  display: inline-flex;
+  color: var(--title-color);
+  font-size: 1.5rem;
+  transition: color var(--transition-base);
+}
+
+.nav__toggle:hover,
+.nav__close:hover {
+  color: var(--first-color);
+}
+
+/* ---------- Drawer (mobile only) ---------- */
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: -100%;
+    z-index: var(--z-navigation);
+    width: min(80%, 320px);
+    height: 100dvh;
+    padding: 4rem 0 0 var(--mb-2);
+    background-color: rgba(32, 32, 32, 0.86);
+    -webkit-backdrop-filter: blur(var(--glass-blur))
+      saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    border-inline-start: 1px solid var(--glass-border);
+    border-start-start-radius: var(--glass-radius);
+    border-end-start-radius: var(--glass-radius);
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+    /* Closed drawers are hidden rather than merely parked offscreen, so their
+       links leave the tab order and the accessibility tree. The zero-duration
+       visibility delay lets the slide-out animation finish first. */
+    visibility: hidden;
+    transition:
+      right var(--transition-base),
+      visibility 0s linear var(--transition-base);
+    overflow-y: auto;
+  }
+
+  .nav__menu--open {
+    right: 0;
+    visibility: visible;
+    transition:
+      right var(--transition-base),
+      visibility 0s linear 0s;
+  }
+}
+
+.nav__close {
+  position: absolute;
+  top: var(--mb-1);
+  right: var(--mb-1-5);
+}
+
+/* ---------- Links ---------- */
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mb-1-5);
+}
+
+.nav__link {
+  display: inline-block;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  transition: color var(--transition-base);
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__link--active {
+  color: var(--first-color);
+}
+
+/* ---------- Desktop nav ---------- */
+
+@media screen and (min-width: 768px) {
+  .nav {
+    height: calc(var(--header-height) + var(--mb-1-5));
+    gap: 3rem;
+  }
+
+  .nav__toggle,
+  .nav__close {
+    display: none;
+  }
+
+  .nav__menu {
+    margin-inline-start: auto;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  /* Underline is redundant once the menu is a horizontal bar. */
+  .nav__link--active::after {
+    display: none;
+  }
+}
+
+/* =============================================================
+   07. HERO
+   ============================================================= */
+
+.home {
+  padding: 3.5rem 0 2rem;
+}
+
+/* Containing block for the absolutely positioned side social rail. Without it
+   the rail would anchor to the viewport instead of the hero. */
+.home__container {
+  position: relative;
+  row-gap: 2rem;
+}
+
+/* ---------- Mobile: enlarged hero for readability ----------
+   The portrait, heading, paragraph and CTA are all scaled up from the base
+   values below 768px, where the single-column layout has room to breathe. */
+.home__img {
+  width: min(62vw, 240px);
+  justify-self: center;
+}
+
+.home__title {
+  font-size: clamp(2.125rem, 9vw, 2.75rem);
+  line-height: 1.15;
+  margin-bottom: var(--mb-1);
+}
+
+.home__description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: var(--mb-2-5);
+}
+
+/* =============================================================
+   07b. SIDE SOCIAL BAR
+   ------------------------------------------------------------
+   A fixed vertical rail pinned to the right edge of the hero at every
+   width. `display: grid` + `justify-items: center` keeps the rotated
+   label and the icon column optically centred against each other.
+
+   It is absolutely positioned and therefore out of flow, so it never
+   pushes hero content downward and never appears at the page bottom.
+
+   The label is rotated rather than set with `writing-mode` because the
+   rotation origin stays predictable and the orange `::after` dash can be
+   positioned in the element's own coordinate space.
+   ============================================================= */
+
+.home__social {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: -1rem;
+  display: grid;
+  justify-items: center;
+  row-gap: 3rem;
+}
+
+.home__social-label {
+  position: relative;
+  color: var(--first-color);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  line-height: 3;
+  display: block;
+  transform: rotate(90deg);
+}
+
+/* Orange dash separator between "Follow Us" and the icons. */
+.home__social-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  inset-inline-end: -45%;
+  width: 1rem;
+  height: 2px;
+  background-color: var(--first-color);
+}
+
+.home__social-links {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Comfortable touch target without changing the optical icon size. */
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--first-color);
+  font-size: 1.15rem;
+  transition: transform var(--transition-base);
+}
+
+.home__social-link:hover {
+  transform: translateX(0.25rem);
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    padding: 10rem 0 5rem;
+  }
+
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .home__img {
+    order: 1;
+    width: 280px;
+  }
+
+  .home__title {
+    font-size: var(--big-font-size);
+  }
+
+  .home__description {
+    font-size: var(--normal-font-size);
+  }
+
+  .home__social {
+    top: 3rem;
+  }
+}
 
 @media screen and (min-width: 992px) {
-  .container {
-    width: min(100% - 3rem, 968px);
-  }
-
-  .section {
-    padding: 8rem 0 1rem;
-  }
-
-  .section__title,
-  .section__title-center {
-    font-size: var(--h1-font-size);
-  }
-
   .home {
     padding: 13rem 0 5rem;
   }
@@ -1210,13 +788,580 @@ i {
   .home__description {
     padding-right: 7rem;
   }
+}
 
+/* ---------- Wide desktop: rail pinned to the container's right edge ----------
+   The container is `width: min(100% - 3rem, 968px)` and centred, so its right
+   edge sits well inside the viewport. Anchoring the rail to the viewport edge
+   would leave it stranded in the empty margin far from the hero content. */
+
+@media screen and (min-width: 1200px) {
+  .home__social {
+    top: 50%;
+    inset-inline-end: -1.5rem;
+    translate: 0 -50%;
+  }
+
+  .home__social-label {
+    font-size: var(--small-font-size);
+  }
+
+  .home__social-links {
+    gap: 0.5rem;
+  }
+
+  .home__social-link {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .home__img {
+    width: min(56vw, 190px);
+  }
+
+  .home__social {
+    inset-inline-end: -0.5rem;
+  }
+
+  .home__social-link {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+/* =============================================================
+   08. ABOUT
+   ============================================================= */
+
+.about__container {
+  row-gap: 2rem;
+}
+
+.about__img {
+  width: min(62vw, 280px);
+  justify-self: center;
+}
+
+.about__title {
+  margin-bottom: var(--mb-1);
+}
+
+.about__description {
+  margin-bottom: var(--mb-2);
+}
+
+.about__details {
+  display: grid;
+  row-gap: var(--mb-1);
+  margin-bottom: var(--mb-2-5);
+}
+
+.about__details-item {
+  display: inline-flex;
+  gap: 0.5rem;
+  font-size: var(--small-font-size);
+}
+
+.about__details-icon {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--first-color);
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
   .about__img {
     width: 380px;
   }
+}
 
+@media screen and (min-width: 1200px) {
+  .about__container {
+    gap: 7rem;
+  }
+}
+
+/* =============================================================
+   09. SKILLS
+   ============================================================= */
+
+.skills {
+  padding-bottom: var(--mb-2);
+}
+
+.skills__panel {
+  padding: 2rem var(--mb-1-5);
+}
+
+.skills__grid {
+  display: grid;
+  gap: var(--mb-2);
+}
+
+.skills__item {
+  display: flex;
+  align-items: center;
+  gap: var(--mb-1);
+}
+
+.skills__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  transition: transform var(--transition-base);
+}
+
+.skills__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.skills__item:hover .skills__icon {
+  transform: scale(1.1);
+}
+
+.skills__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.skills__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--mb-0-5);
+  margin-bottom: 0.5rem;
+}
+
+.skills__name,
+.skills__value {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.skills__name {
+  font-size: var(--normal-font-size);
+}
+
+.skills__value {
+  font-size: var(--small-font-size);
+  font-variant-numeric: tabular-nums;
+}
+
+.skills__bar {
+  height: 5px;
+  overflow: hidden;
+  background-color: var(--track-color);
+  border-radius: 10px;
+}
+
+.skills__progress {
+  width: 0;
+  height: 100%;
+  background-color: var(--first-color);
+  border-radius: inherit;
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media screen and (min-width: 576px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills__panel {
+    padding: 3rem 2rem;
+  }
+}
+
+/* =============================================================
+   10. PROJECTS
+   -------------------------------------------------------------
+   Horizontal rectangular cards: a fixed media column beside a
+   compact content column, with a clamped description so every card
+   holds the same predictable height.
+   ============================================================= */
+
+.projects {
+  padding-bottom: 3rem;
+}
+
+.projects__title {
+  margin-bottom: var(--mb-2-5);
+  color: var(--title-color);
+  font-size: var(--h1-font-size);
+  font-weight: 700;
+  text-align: center;
+}
+
+.projects__grid {
+  display: grid;
+  gap: var(--project-gap);
+}
+
+/* ---------- Card ---------- */
+
+.project-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+
+  /* Stacks to the full container width on mobile so the larger type inside
+     has room to breathe instead of being cramped into a narrow column. */
+  width: 100%;
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.project-card:hover {
+  background-color: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-0.25rem);
+}
+
+@media screen and (min-width: 768px) {
+  .project-card {
+    grid-template-columns: var(--project-image-column) 1fr;
+    grid-template-rows: 1fr;
+    min-height: var(--project-card-min-height);
+  }
+}
+
+/* ---------- Media ---------- */
+
+.project-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--project-image-aspect);
+}
+
+@media screen and (min-width: 768px) {
+  .project-card__media {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+
+.project-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card__img {
+  transform: scale(1.06);
+}
+
+.project-card__number {
+  position: absolute;
+  top: 0.625rem;
+  left: 0.875rem;
+  z-index: 1;
+  color: var(--white-color);
+  font-size: var(--project-number-size);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* ---------- Content ---------- */
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: var(--project-content-padding);
+}
+
+.project-card__title {
+  margin-bottom: 0.375rem;
+  font-size: var(--project-title-size);
+}
+
+.project-card__text {
+  display: -webkit-box;
+  margin-bottom: var(--mb-1);
+  overflow: hidden;
+  color: var(--text-color);
+  font-size: var(--project-desc-size);
+  line-height: 1.6;
+  /* Guarantees the compact height regardless of copy length. */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--project-desc-lines);
+  line-clamp: var(--project-desc-lines);
+}
+
+.project-card__footer {
+  margin-top: auto;
+}
+
+/* ---------- Action link ---------- */
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-end;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  transition: color var(--transition-base);
+}
+
+.project-card__link i {
+  font-size: 1.1rem;
+  transition: transform var(--transition-base);
+}
+
+.project-card__link:hover {
+  color: var(--first-color-alt);
+}
+
+.project-card__link:hover i {
+  transform: translateX(0.25rem);
+}
+
+/* ---------- Non-linked project (no live URL) ---------- */
+
+.project-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-end;
+  padding: 0.25rem 0.625rem;
+  color: var(--text-color-light);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Responsive ---------- */
+
+@media screen and (min-width: 576px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 575px) {
+  /* Slightly taller media block keeps the thumb legible on phones. */
+  .project-card__media {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .project-card:hover {
+    transform: translateY(-0.4rem);
+  }
+}
+
+/* =============================================================
+   11. CONTACT
+   ============================================================= */
+
+.contact__container {
+  row-gap: 3.5rem;
+}
+
+.contact__data {
+  display: grid;
+  row-gap: var(--mb-2);
+}
+
+.contact__subtitle {
+  margin-bottom: var(--mb-0-5);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.contact__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  overflow-wrap: anywhere;
+}
+
+.contact__icon {
+  flex-shrink: 0;
+  color: var(--first-color);
+  font-size: 1.25rem;
+}
+
+/* ---------- Glass form panel ---------- */
+
+.contact__form {
+  padding: 2rem var(--mb-1-5);
+}
+
+.contact__fields {
+  display: grid;
+  row-gap: var(--mb-2);
+  margin-bottom: var(--mb-2-5);
+}
+
+/* Each field reserves a dedicated "label lane" above the text lane via
+   `padding-top`. The label animates between those two lanes, so it can
+   never overlap the value or be clipped by the field — this is what fixes
+   the textarea label sitting on the top border. */
+.contact__field {
+  --label-lane: 1.5rem;
+
+  position: relative;
+  height: calc(3.25rem + var(--label-lane));
+  padding-top: var(--label-lane);
+  border-bottom: 1px solid var(--text-color-light);
+  transition: border-color var(--transition-base);
+}
+
+/* Neutral focus state: brighter grey, never the accent colour. */
+.contact__field:focus-within {
+  border-bottom-color: var(--text-color);
+}
+
+.contact__field--area {
+  height: calc(7.5rem + var(--label-lane));
+}
+
+.contact__input {
+  position: absolute;
+  inset: var(--label-lane) 0 0 0;
+  z-index: 1;
+  width: 100%;
+  padding: 0 1rem 0.4rem 0;
+  color: var(--text-color);
+  line-height: 1.5;
+  resize: none;
+}
+
+.contact__label {
+  position: absolute;
+  top: calc(var(--label-lane) + 0.4rem);
+  left: 0;
+  color: var(--text-color-light);
+  font-size: var(--small-font-size);
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    top var(--transition-base),
+    color var(--transition-base),
+    font-size var(--transition-base);
+}
+
+/* Float the label into the reserved lane when focused or filled. The
+   `:placeholder-shown` selector requires a placeholder present in the
+   markup — it is supplied via `placeholder=" "`, not an empty attribute. */
+.contact__input:focus + .contact__label,
+.contact__input:not(:placeholder-shown) + .contact__label {
+  top: 0.25rem;
+  color: var(--first-color);
+  font-size: var(--smaller-font-size);
+}
+
+/* Native validation bubble styled to match the palette. */
+.contact__input:user-invalid {
+  color: var(--first-color-alt);
+}
+
+@media screen and (min-width: 768px) {
+  .contact__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__form {
+    padding: 2.5rem;
+  }
+}
+
+/* =============================================================
+   12. FOOTER
+   ============================================================= */
+
+.footer__container {
+  row-gap: 3rem;
+}
+
+.footer__title {
+  margin-bottom: var(--mb-1-5);
+  font-size: var(--h3-font-size);
+}
+
+.footer__list {
+  display: grid;
+  row-gap: 0.75rem;
+}
+
+.footer__text {
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+}
+
+.footer__social {
+  display: inline-flex;
+  gap: var(--mb-1-5);
+  margin-top: var(--mb-1);
+}
+
+.footer__social-link {
+  display: inline-flex;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.footer__social-link:hover {
+  color: var(--first-color);
+  transform: translateY(-0.25rem);
+}
+
+.footer__copy {
+  margin: 5rem 0 var(--mb-1);
+  color: var(--text-color-light);
+  font-size: var(--smaller-font-size);
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
   .footer__container {
-    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  /* Two columns only — the previous 4-track grid left two empty
+     tracks because the markup contains two blocks. */
+  .footer__container {
+    grid-template-columns: 1fr 1fr;
   }
 
   .footer__copy {
@@ -1224,36 +1369,122 @@ i {
   }
 }
 
-/* ==================================================
-   EXTRA LARGE DESKTOP
-================================================== */
+/* =============================================================
+   13. UTILITIES
+   ============================================================= */
+
+/* ---------- Scroll to top ---------- */
+
+.scrollup {
+  position: fixed;
+  right: 1rem;
+  bottom: -30%;
+  z-index: var(--z-floating);
+  display: inline-flex;
+  padding: 0.5rem;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  border-radius: 0.25rem;
+  opacity: 0.85;
+  transition:
+    bottom var(--transition-slow),
+    background-color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.scrollup:hover {
+  background-color: var(--first-color-alt);
+  opacity: 1;
+}
+
+.scrollup--visible {
+  bottom: var(--mb-2-5);
+}
 
 @media screen and (min-width: 1200px) {
-  .home__social {
-    right: -3rem;
-
-    row-gap: 4.5rem;
-  }
-
-  .home__social-follow {
-    font-size: var(--small-font-size);
-  }
-
-  .home__social-follow::after {
-    width: 1.5rem;
-
-    right: -60%;
-  }
-
-  .home__social-link {
-    font-size: 1.15rem;
-  }
-
-  .about__container {
-    column-gap: 7rem;
-  }
-
   .scrollup {
     right: 3rem;
+  }
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--first-color);
+}
+
+/* =============================================================
+   SCROLL REVEAL
+   -------------------------------------------------------------
+   Entrance animations driven by an IntersectionObserver that adds and
+   removes `.is-active`, so scrolling back up re-triggers them without a
+   reload.
+
+   The hidden start state is scoped to `html.has-reveal`, a class the
+   script adds on start-up. If JavaScript is blocked, errors, or the
+   library fails to load, that class is never added and every element
+   renders fully visible — content is never trapped at opacity 0.
+
+   The offset is vertical only. A horizontal start offset would push
+   elements outside the container gutter and get clipped.
+   ============================================================= */
+
+.has-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity var(--reveal-duration) var(--ease-out-soft),
+    transform var(--reveal-duration) var(--ease-out-soft);
+}
+
+.has-reveal [data-reveal].is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Slightly larger travel for full-width blocks reads better than for
+   small inline items such as the portrait and social row. */
+.has-reveal [data-reveal="fade-up-lg"] {
+  --reveal-distance: 32px;
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Glass blur is a decorative filter, not motion — it is kept, but
+     the cards must not shift position on hover. */
+  .project-card:hover,
+  .button:hover {
+    transform: none;
+  }
+
+  /* Force the end state even if the class was applied. */
+  .has-reveal [data-reveal],
+  .has-reveal [data-reveal].is-active {
+    opacity: 1;
+    transform: none;
   }
 }
