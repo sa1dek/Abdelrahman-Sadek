@@ -1,0 +1,231 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: #f05825;
+  --title-color: #fff;
+  --text-color: #fff;
+  --white-color: hsl(216, 33%, 98%);
+  --body-color: #171717;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+}
+
+/*=============== BASE ===============*/
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  min-height: 100dvh;
+  margin-inline: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+/*=============== Card ===============*/
+.card {
+  width: min(100%, 450px);
+  background-color: var(--body-color);
+  box-shadow: 0 7px 20px #f05825;
+  padding: 2rem clamp(1.25rem, 5vw, 4.5rem) 3rem;
+  border-radius: 3rem;
+  text-align: center;
+}
+
+.card__img {
+  width: 100px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  border: 2px solid var(--first-color);
+}
+
+.card__name {
+  font-size: var(--h2-font-size);
+  font-weight: 600;
+  color: var(--title-color);
+  margin-bottom: 0.25rem;
+}
+
+.card__profession {
+  font-size: var(--small-font-size);
+  margin-bottom: 1.5rem;
+}
+
+/*=============== BUTTON ===============*/
+.button {
+  position: relative;
+  background-color: var(--body-color);
+  border: 3px solid var(--first-color);
+  outline: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4rem;
+  cursor: pointer;
+}
+
+.button__social {
+  display: flex;
+  column-gap: 0.25rem;
+  z-index: 1;
+}
+
+.button__social a {
+  font-size: 1.5rem;
+  color: var(--first-color);
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.2, 1.2);
+  transform: translateY(1rem);
+}
+
+.button__social a:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.button__social a:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.button__social a:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.button__social a:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+.button__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--first-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 4rem;
+  display: grid;
+  place-items: center;
+  transform: scale(1.03);
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.2, 1.2);
+  z-index: 5;
+}
+
+.button__content span {
+  color: var(--white-color);
+  font: 600 var(--normal-font-size) var(--body-font);
+}
+
+/* Animate button */
+.button:hover .button__content {
+  transform: translateY(-28px) scale(0.4);
+}
+
+.button:hover .button__social a {
+  transform: translateY(0) scale(1);
+}
+
+/* =============== RESPONSIVE =============== */
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  .container {
+    min-height: 100dvh;
+    height: auto;
+    margin-inline: 1rem;
+  }
+
+  .card {
+    width: min(100%, 420px);
+    padding: 2rem 2.5rem 2.5rem;
+    border-radius: 2.5rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .container {
+    min-height: 100dvh;
+    margin-inline: 0.75rem;
+  }
+
+  .card {
+    width: 100%;
+    padding: 1.75rem 1.25rem 2rem;
+    border-radius: 2rem;
+  }
+
+  .card__img {
+    width: 90px;
+  }
+
+  .card__name {
+    font-size: 1.1rem;
+  }
+
+  .card__profession {
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .button {
+    padding: 0.7rem 1.25rem;
+  }
+
+  .button__social a {
+    font-size: 1.3rem;
+  }
+}
+
+/* Very small phones */
+@media screen and (max-width: 360px) {
+  .container {
+    margin-inline: 0.5rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem 1.75rem;
+    border-radius: 1.5rem;
+  }
+
+  .card__img {
+    width: 80px;
+  }
+
+  .button {
+    padding: 0.65rem 1rem;
+  }
+}
