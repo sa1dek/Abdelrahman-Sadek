@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ---------- SEO ---------- -->
+    <!-- ----------|SEO|---------- -->
     <title>Abdelrahman - Web Developer</title>
     <meta
       name="description"
@@ -13,7 +13,7 @@
     <meta name="theme-color" content="#171717" />
     <meta name="author" content="Abdelrahman" />
 
-    <!-- ---------- Open Graph ---------- -->
+    <!-- ----------|Open Graph|---------- -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Abdelrahman - Web Developer" />
     <meta
@@ -22,7 +22,7 @@
     />
     <meta property="og:image" content="assets/img/Logo-transparent.png" />
 
-    <!-- ---------- Icons & fonts ---------- -->
+    <!-- ----------|Icons & fonts|---------- -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,36 +38,74 @@
   </head>
 
   <body>
-    <!-- ==========================================================
-         HEADER
-         ========================================================== -->
-    <header class="header" id="header">
+    <!-- ----------|Header|---------- -->
+    <header
+      class="header animate-on-load delay-000"
+      id="header"
+      data-direction="down"
+    >
       <nav class="nav container" aria-label="Primary">
-        <a href="#home" class="nav__logo" aria-label="Back to top">
+        <a
+          href="#home"
+          class="nav__logo animate-on-load delay-050"
+          aria-label="Back to top"
+          data-direction="down"
+        >
           Abdelrahman<span class="nav__logo-mark">.</span>
         </a>
 
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
-            <li class="nav__item"><a href="#home" class="nav__link nav__link--active">Home</a></li>
-            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-            <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-            <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-            <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+            <li
+              class="nav__item animate-on-load delay-100"
+              data-direction="down"
+            >
+              <a href="#home" class="nav__link nav__link--active">Home</a>
+            </li>
+            <li
+              class="nav__item animate-on-load delay-150"
+              data-direction="down"
+            >
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li
+              class="nav__item animate-on-load delay-200"
+              data-direction="down"
+            >
+              <a href="#skills" class="nav__link">Skills</a>
+            </li>
+            <li
+              class="nav__item animate-on-load delay-250"
+              data-direction="down"
+            >
+              <a href="#projects" class="nav__link">Projects</a>
+            </li>
+            <li
+              class="nav__item animate-on-load delay-300"
+              data-direction="down"
+            >
+              <a href="#contact" class="nav__link">Contact</a>
+            </li>
           </ul>
 
-          <button type="button" class="nav__close" id="nav-close" aria-label="Close navigation menu">
+          <button
+            type="button"
+            class="nav__close"
+            id="nav-close"
+            aria-label="Close navigation menu"
+          >
             <i class="ri-close-line" aria-hidden="true"></i>
           </button>
         </div>
 
         <button
           type="button"
-          class="nav__toggle"
+          class="nav__toggle animate-on-load delay-400"
           id="nav-toggle"
           aria-label="Open navigation menu"
           aria-controls="nav-menu"
           aria-expanded="false"
+          data-direction="down"
         >
           <i class="ri-menu-line" aria-hidden="true"></i>
         </button>
@@ -75,33 +113,41 @@
     </header>
 
     <main class="main">
-      <!-- ========================================================
-           HERO
-           ======================================================== -->
+      <!-- ----------|Hero|---------- -->
       <section class="home" id="home">
         <div class="home__container container grid">
           <img
             src="assets/img/my-photo3.png"
             alt="Portrait of Abdelrahman"
-            class="home__img" data-reveal="fade-up"
+            class="home__img animate-on-load delay-100"
             width="350"
             height="350"
+            data-direction="right"
           />
 
-          <div class="home__data" data-reveal="fade-up-lg">
-            <h1 class="home__title">I'm Abdelrahman</h1>
-            <p class="home__description">
+          <div class="home__data">
+            <h1 class="home__title animate-on-load delay-150">
+              I'm Abdelrahman
+            </h1>
+            <p class="home__description animate-on-load delay-200">
               A professional web developer building modern, high-performing
               websites and digital solutions.
             </p>
-            <a href="#about" class="button">
-              About Me <i class="ri-arrow-right-down-line button__icon" aria-hidden="true"></i>
+            <a href="#about" class="button animate-on-load delay-250">
+              About Me
+              <i
+                class="ri-arrow-right-down-line button__icon"
+                aria-hidden="true"
+              ></i>
             </a>
           </div>
 
           <!-- Vertical side rail. Absolutely positioned via CSS so it stays on
                the hero's right edge at every width and never enters flow. -->
-          <div class="home__social">
+          <div
+            class="home__social animate-on-load delay-300"
+            data-direction="left"
+          >
             <span class="home__social-label">Follow Us</span>
             <div class="home__social-links">
               <a
@@ -110,43 +156,54 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Abdelrahman on Instagram"
-              ><i class="ri-instagram-line" aria-hidden="true"></i></a>
+                ><i class="ri-instagram-line" aria-hidden="true"></i
+              ></a>
               <a
                 href="https://github.com/sa1dek"
                 class="home__social-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Abdelrahman on GitHub"
-              ><i class="ri-github-fill" aria-hidden="true"></i></a>
+                ><i class="ri-github-fill" aria-hidden="true"></i
+              ></a>
               <a
                 href="https://www.linkedin.com/in/abdelrahman-mohamed-6aa009375/"
                 class="home__social-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Abdelrahman on LinkedIn"
-              ><i class="ri-linkedin-fill" aria-hidden="true"></i></a>
+                ><i class="ri-linkedin-fill" aria-hidden="true"></i
+              ></a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ========================================================
-           ABOUT
-           ======================================================== -->
-      <section class="about section container" id="about" aria-labelledby="about-title">
+      <!-- ----------|About|---------- -->
+      <section
+        class="about section container"
+        id="about"
+        aria-labelledby="about-title"
+      >
         <div class="about__container grid">
           <img
             src="assets/img/my-photo2.png"
             alt="Abdelrahman working at his desk"
-            class="about__img" data-reveal="fade-up"
+            class="about__img animate-on-load delay-050"
             width="380"
             height="380"
             loading="lazy"
             decoding="async"
+            data-direction="left"
           />
 
-          <div class="about__data" data-reveal="fade-up-lg">
-            <h2 class="section__title about__title" id="about-title">Who am I?</h2>
+          <div
+            class="about__data animate-on-load delay-150"
+            data-direction="right"
+          >
+            <h2 class="section__title about__title" id="about-title">
+              Who am I?
+            </h2>
             <p class="about__description">
               An Artificial Intelligence student and passionate web developer,
               with hands-on experience designing and building modern,
@@ -155,36 +212,63 @@
 
             <ul class="about__details">
               <li class="about__details-item">
-                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                <i
+                  class="ri-checkbox-fill about__details-icon"
+                  aria-hidden="true"
+                ></i>
                 Handle complex, custom-built web solutions.
               </li>
               <li class="about__details-item">
-                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                <i
+                  class="ri-checkbox-fill about__details-icon"
+                  aria-hidden="true"
+                ></i>
                 Blend advanced AI logic with modern web development.
               </li>
               <li class="about__details-item">
-                <i class="ri-checkbox-fill about__details-icon" aria-hidden="true"></i>
+                <i
+                  class="ri-checkbox-fill about__details-icon"
+                  aria-hidden="true"
+                ></i>
                 Ready to bring high-end projects to life.
               </li>
             </ul>
 
             <a href="#skills" class="button--link">
-              View Skills <i class="ri-arrow-right-down-line button__icon" aria-hidden="true"></i>
+              View Skills
+              <i
+                class="ri-arrow-right-down-line button__icon"
+                aria-hidden="true"
+              ></i>
             </a>
           </div>
         </div>
       </section>
 
-      <!-- ========================================================
-           SKILLS
-           ======================================================== -->
-      <section class="skills section container" id="skills" aria-labelledby="skills-title">
-        <div class="skills__panel glass" data-reveal="fade-up-lg">
-          <h2 class="section__title-center" id="skills-title">My Skills</h2>
+      <!-- ----------|Skills|---------- -->
+      <section
+        class="skills section container"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="skills__panel glass animate-on-load delay-100">
+          <h2
+            class="section__title-center animate-on-load delay-150"
+            id="skills-title"
+          >
+            My Skills
+          </h2>
 
           <div class="skills__grid">
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/html.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-200">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/html.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">HTML</span>
@@ -196,8 +280,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/css.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-250">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/css.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">CSS</span>
@@ -209,8 +300,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/javascript.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-300">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/javascript.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">JavaScript</span>
@@ -222,8 +320,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/java.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-350">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/java.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">Java</span>
@@ -235,8 +340,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/C.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-400">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/C.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">C</span>
@@ -248,8 +360,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/arduino.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-450">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/arduino.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">Arduino</span>
@@ -261,8 +380,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/react.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-500">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/react.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">React</span>
@@ -274,8 +400,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/database.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-550">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/database.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">Database</span>
@@ -287,8 +420,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/git.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-600">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/git.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">Git</span>
@@ -300,8 +440,15 @@
               </div>
             </div>
 
-            <div class="skills__item">
-              <div class="skills__icon"><img src="assets/img/tools/github.svg" alt="" width="40" height="40" /></div>
+            <div class="skills__item animate-on-load delay-650">
+              <div class="skills__icon">
+                <img
+                  src="assets/img/tools/github.svg"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div class="skills__body">
                 <div class="skills__meta">
                   <span class="skills__name">GitHub</span>
@@ -316,14 +463,21 @@
         </div>
       </section>
 
-      <!-- ========================================================
-           PROJECTS - horizontal rectangular cards
-           ======================================================== -->
-      <section class="projects section container" id="projects" aria-labelledby="projects-title">
-        <h2 class="projects__title" id="projects-title">Some of My Recent Work</h2>
+      <!-- ----------|PROJECTS|---------- -->
+      <section
+        class="projects section container"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <h2
+          class="projects__title animate-on-load delay-100"
+          id="projects-title"
+        >
+          Some of My Recent Work
+        </h2>
 
         <div class="projects__grid">
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-150">
             <div class="project-card__media">
               <img
                 src="assets/img/projects/qr-code-generator.jpg"
@@ -336,7 +490,9 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">QR Code Generator</h3>
-              <p class="project-card__text">Dynamic QR codes with live tracking and analytics.</p>
+              <p class="project-card__text">
+                Dynamic QR codes with live tracking and analytics.
+              </p>
               <div class="project-card__footer">
                 <a
                   href="https://qr-code-generator-gules-iota.vercel.app/"
@@ -350,7 +506,7 @@
             </div>
           </article>
 
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-200">
             <div class="project-card__media">
               <img
                 src="assets/img/projects/cv-website.jpg"
@@ -363,7 +519,9 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">CV Website</h3>
-              <p class="project-card__text">A responsive CV with a one-click PDF export.</p>
+              <p class="project-card__text">
+                A responsive CV with a one-click PDF export.
+              </p>
               <div class="project-card__footer">
                 <a
                   href="https://sa1dek.github.io/CV-Abdelrahman/"
@@ -377,7 +535,7 @@
             </div>
           </article>
 
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-250">
             <div class="project-card__media">
               <img
                 src="assets/img/projects/organizational-details.png"
@@ -390,7 +548,9 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">Online Exam System</h3>
-              <p class="project-card__text">Timed online exams with automatic grading.</p>
+              <p class="project-card__text">
+                Timed online exams with automatic grading.
+              </p>
               <div class="project-card__footer">
                 <a
                   href="https://relief-hostel.vercel.app/"
@@ -404,7 +564,7 @@
             </div>
           </article>
 
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-300">
             <div class="project-card__media">
               <img
                 src="assets/img/projects/watch-website-store.jpg"
@@ -417,7 +577,9 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">Watch Store</h3>
-              <p class="project-card__text">A modern storefront for browsing and selling watches.</p>
+              <p class="project-card__text">
+                A modern storefront for browsing and selling watches.
+              </p>
               <div class="project-card__footer">
                 <a
                   href="https://sa1dek.github.io/Digital-Watch-Landing-Page/"
@@ -432,7 +594,7 @@
           </article>
 
           <!-- No public URL: rendered as a muted badge rather than a dead link. -->
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-350">
             <div class="project-card__media">
               <img
                 src="https://i.postimg.cc/FHrzHGBG/JP-Java.jpg"
@@ -445,14 +607,16 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">Java Programming</h3>
-              <p class="project-card__text">A Java Swing desktop app for inventory and sales.</p>
+              <p class="project-card__text">
+                A Java Swing desktop app for inventory and sales.
+              </p>
               <div class="project-card__footer">
                 <span class="project-card__badge">Private project</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card glass" data-reveal="fade-up">
+          <article class="project-card glass animate-on-load delay-400">
             <div class="project-card__media">
               <img
                 src="https://i.postimg.cc/LXch4pcZ/DP-Database.jpg"
@@ -465,7 +629,9 @@
             </div>
             <div class="project-card__body">
               <h3 class="project-card__title">Database Programming</h3>
-              <p class="project-card__text">Relational schema design and query optimisation.</p>
+              <p class="project-card__text">
+                Relational schema design and query optimisation.
+              </p>
               <div class="project-card__footer">
                 <span class="project-card__badge">Private project</span>
               </div>
@@ -474,13 +640,17 @@
         </div>
       </section>
 
-      <!-- ========================================================
-           CONTACT
-           ======================================================== -->
-      <section class="contact section container" id="contact" aria-labelledby="contact-title">
+      <!-- ----------|CONTACT|---------- -->
+      <section
+        class="contact section container"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
         <div class="contact__container grid">
-          <div class="contact__box" data-reveal="fade-up-lg">
-            <h2 class="section__title" id="contact-title">Create your website<br />with me.</h2>
+          <div class="contact__box animate-on-load delay-050">
+            <h2 class="section__title" id="contact-title">
+              Create your website<br />with me.
+            </h2>
 
             <div class="contact__data">
               <div class="contact__information">
@@ -493,7 +663,10 @@
 
               <div class="contact__information">
                 <h3 class="contact__subtitle">Email Me</h3>
-                <a href="mailto:abdelrahman20e@gmail.com" class="contact__value">
+                <a
+                  href="mailto:abdelrahman20e@gmail.com"
+                  class="contact__value"
+                >
                   <i class="ri-mail-line contact__icon" aria-hidden="true"></i>
                   abdelrahman20e@gmail.com
                 </a>
@@ -503,7 +676,11 @@
 
           <!-- No `action`: submission is intercepted by main.js and forwarded
                to WhatsApp, so the page is never reloaded. -->
-          <form class="contact__form glass" id="contact-form" novalidate data-reveal="fade-up-lg">
+          <form
+            class="contact__form glass animate-on-load delay-150"
+            id="contact-form"
+            novalidate
+          >
             <div class="contact__fields">
               <div class="contact__field">
                 <input
@@ -551,19 +728,19 @@
             <button class="button" id="send-btn" type="submit">
               <span class="button__spinner" aria-hidden="true"></span>
               <span>Send Message</span>
-              <i class="ri-arrow-right-up-line button__icon" aria-hidden="true"></i>
+              <i
+                class="ri-arrow-right-up-line button__icon"
+                aria-hidden="true"
+              ></i>
             </button>
           </form>
         </div>
       </section>
     </main>
-
-    <!-- ==========================================================
-         FOOTER
-         ========================================================== -->
+    <!-- ----------|Footer|---------- -->
     <footer class="footer section">
       <div class="footer__container container grid">
-        <div class="footer__content" data-reveal="fade-up">
+        <div class="footer__content animate-on-load delay-050">
           <h2 class="footer__title">Our Address</h2>
           <ul class="footer__list">
             <li class="footer__text">Giza</li>
@@ -572,14 +749,16 @@
           </ul>
         </div>
 
-        <div class="footer__content" data-reveal="fade-up">
+        <div class="footer__content animate-on-load delay-150">
           <h2 class="footer__title">Contact Us</h2>
           <ul class="footer__list">
             <li class="footer__text">
               <a href="tel:+201068480441">+201068480441</a>
             </li>
             <li class="footer__text">
-              <a href="mailto:abdelrahman20e@gmail.com">abdelrahman20e@gmail.com</a>
+              <a href="mailto:abdelrahman20e@gmail.com"
+                >abdelrahman20e@gmail.com</a
+              >
             </li>
           </ul>
 
@@ -590,21 +769,24 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-            ><i class="ri-instagram-line" aria-hidden="true"></i></a>
+              ><i class="ri-instagram-line" aria-hidden="true"></i
+            ></a>
             <a
               href="https://github.com/sa1dek"
               class="footer__social-link"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-            ><i class="ri-github-fill" aria-hidden="true"></i></a>
+              ><i class="ri-github-fill" aria-hidden="true"></i
+            ></a>
             <a
               href="https://www.linkedin.com/in/abdelrahman-mohamed-6aa009375/"
               class="footer__social-link"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-            ><i class="ri-linkedin-fill" aria-hidden="true"></i></a>
+              ><i class="ri-linkedin-fill" aria-hidden="true"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -614,7 +796,12 @@
       </p>
     </footer>
 
-    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll back to top">
+    <a
+      href="#home"
+      class="scrollup"
+      id="scroll-up"
+      aria-label="Scroll back to top"
+    >
       <i class="ri-arrow-up-fill" aria-hidden="true"></i>
     </a>
     <script src="assets/js/main.js"></script>

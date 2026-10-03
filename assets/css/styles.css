@@ -1,30 +1,6 @@
-/* =============================================================
-   ABDELRAHMAN — WEB DEVELOPER PORTFOLIO
-   -------------------------------------------------------------
-   TABLE OF CONTENTS
-     01. Design tokens
-     02. Reset & base
-     03. Layout primitives
-     04. Buttons
-     05. Liquid glass surfaces
-     06. Header & navigation
-     07. Hero
-     08. About
-     09. Skills
-     10. Projects
-     11. Contact
-     12. Footer
-     13. Utilities (scroll-up, scrollbar, motion)
-
-   Breakpoint scale (mobile-first, `min-width`):
-     sm  576px   md  768px   lg  992px   xl 1200px
-   ============================================================= */
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* =============================================================
-   01. DESIGN TOKENS
-   ============================================================= */
+/* ---------- SECTION: DESIGN TOKENS ---------- */
 
 :root {
   /* ---------- Layout ---------- */
@@ -98,6 +74,13 @@
   --transition-slow: 0.4s ease;
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* ---------- Entrance (page load / refresh) ----------
+     Distinct from the scroll-reveal block below: these drive the pure-CSS
+     entrance that runs on first paint, with no observer involved. */
+  --enter-duration: 0.5s;
+  --enter-distance: 22px;
+  --enter-distance-x: 18px;
+
   /* ---------- Scroll reveal ---------- */
   --reveal-duration: 0.7s;
   --reveal-distance: 24px;
@@ -144,9 +127,7 @@
   }
 }
 
-/* =============================================================
-   02. RESET & BASE
-   ============================================================= */
+/* ---------- SECTION: RESET & BASE ---------- */
 
 *,
 *::before,
@@ -295,9 +276,7 @@ textarea:focus-within,
   box-shadow: none !important;
 }
 
-/* =============================================================
-   03. LAYOUT PRIMITIVES
-   ============================================================= */
+/* ---------- SECTION: LAYOUT PRIMITIVES ---------- */
 
 .container {
   width: calc(100% - var(--gutter));
@@ -335,9 +314,7 @@ textarea:focus-within,
   min-width: 0;
 }
 
-/* =============================================================
-   04. BUTTONS
-   ============================================================= */
+/* ---------- SECTION: BUTTONS ---------- */
 
 .button {
   display: inline-flex;
@@ -438,14 +415,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   05. LIQUID GLASS SURFACES
-   -------------------------------------------------------------
-   One primitive, applied by the sections that need it. A solid
-   fallback is supplied for engines without `backdrop-filter`, so the
-   surface never renders as an unreadable transparent panel.
-   ============================================================= */
-
+/* ---------- SECTION: LIQUID GLASS SURFACES ---------- */
 .glass {
   position: relative;
   background: var(--glass-bg);
@@ -490,9 +460,7 @@ textarea:focus-within,
   pointer-events: none;
 }
 
-/* =============================================================
-   06. HEADER & NAVIGATION
-   ============================================================= */
+/* ---------- SECTION: HEADER & NAVIGATION ---------- */
 
 .header {
   position: fixed;
@@ -646,9 +614,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   07. HERO
-   ============================================================= */
+/* ---------- SECTION: HERO ---------- */
 
 .home {
   padding: 3.5rem 0 2rem;
@@ -680,21 +646,6 @@ textarea:focus-within,
   line-height: 1.7;
   margin-bottom: var(--mb-2-5);
 }
-
-/* =============================================================
-   07b. SIDE SOCIAL BAR
-   ------------------------------------------------------------
-   A fixed vertical rail pinned to the right edge of the hero at every
-   width. `display: grid` + `justify-items: center` keeps the rotated
-   label and the icon column optically centred against each other.
-
-   It is absolutely positioned and therefore out of flow, so it never
-   pushes hero content downward and never appears at the page bottom.
-
-   The label is rotated rather than set with `writing-mode` because the
-   rotation origin stays predictable and the orange `::after` dash can be
-   positioned in the element's own coordinate space.
-   ============================================================= */
 
 .home__social {
   position: absolute;
@@ -830,9 +781,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   08. ABOUT
-   ============================================================= */
+/* ---------- SECTION: ABOUT ---------- */
 
 .about__container {
   row-gap: 2rem;
@@ -888,9 +837,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   09. SKILLS
-   ============================================================= */
+/* ---------- SECTION: SKILLS ---------- */
 
 .skills {
   padding-bottom: var(--mb-2);
@@ -970,7 +917,6 @@ textarea:focus-within,
   height: 100%;
   background-color: var(--first-color);
   border-radius: inherit;
-  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @media screen and (min-width: 576px) {
@@ -989,13 +935,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   10. PROJECTS
-   -------------------------------------------------------------
-   Horizontal rectangular cards: a fixed media column beside a
-   compact content column, with a clamped description so every card
-   holds the same predictable height.
-   ============================================================= */
+/* ---------- SECTION: PROJECTS ---------- */
 
 .projects {
   padding-bottom: 3rem;
@@ -1181,9 +1121,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   11. CONTACT
-   ============================================================= */
+/* ---------- SECTION: CONTACT ---------- */
 
 .contact__container {
   row-gap: 3.5rem;
@@ -1227,10 +1165,6 @@ textarea:focus-within,
   margin-bottom: var(--mb-2-5);
 }
 
-/* Each field reserves a dedicated "label lane" above the text lane via
-   `padding-top`. The label animates between those two lanes, so it can
-   never overlap the value or be clipped by the field — this is what fixes
-   the textarea label sitting on the top border. */
 .contact__field {
   --label-lane: 1.5rem;
 
@@ -1300,9 +1234,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   12. FOOTER
-   ============================================================= */
+/* ---------- SECTION: FOOTER ---------- */
 
 .footer__container {
   row-gap: 3rem;
@@ -1369,10 +1301,7 @@ textarea:focus-within,
   }
 }
 
-/* =============================================================
-   13. UTILITIES
-   ============================================================= */
-
+/* ---------- SECTION: UTILITIES ---------- */
 /* ---------- Scroll to top ---------- */
 
 .scrollup {
@@ -1423,21 +1352,7 @@ textarea:focus-within,
   background-color: var(--first-color);
 }
 
-/* =============================================================
-   SCROLL REVEAL
-   -------------------------------------------------------------
-   Entrance animations driven by an IntersectionObserver that adds and
-   removes `.is-active`, so scrolling back up re-triggers them without a
-   reload.
-
-   The hidden start state is scoped to `html.has-reveal`, a class the
-   script adds on start-up. If JavaScript is blocked, errors, or the
-   library fails to load, that class is never added and every element
-   renders fully visible — content is never trapped at opacity 0.
-
-   The offset is vertical only. A horizontal start offset would push
-   elements outside the container gutter and get clipped.
-   ============================================================= */
+/* ---------- SECTION: SCROLL REVEAL ---------- */
 
 .has-reveal [data-reveal] {
   opacity: 0;
@@ -1456,6 +1371,131 @@ textarea:focus-within,
    small inline items such as the portrait and social row. */
 .has-reveal [data-reveal="fade-up-lg"] {
   --reveal-distance: 32px;
+}
+
+/* ---------- ENTRANCE KEYFRAMES ---------- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Reveal elements (shared for load + scroll) ---------- */
+
+.reveal-element,
+.animate-on-load {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.animate-on-load {
+  animation-name: fadeInUp;
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+
+.reveal-element {
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-element.animated,
+.reveal-element.active,
+.animate-on-load.animated,
+.animate-on-load.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay steps: 0.05s intervals up to 1.0s */
+.animate-on-load.delay-000 {
+  animation-delay: 0s;
+}
+.animate-on-load.delay-050 {
+  animation-delay: 0.05s;
+}
+.animate-on-load.delay-100 {
+  animation-delay: 0.1s;
+}
+.animate-on-load.delay-150 {
+  animation-delay: 0.15s;
+}
+.animate-on-load.delay-200 {
+  animation-delay: 0.2s;
+}
+.animate-on-load.delay-250 {
+  animation-delay: 0.25s;
+}
+.animate-on-load.delay-300 {
+  animation-delay: 0.3s;
+}
+.animate-on-load.delay-350 {
+  animation-delay: 0.35s;
+}
+.animate-on-load.delay-400 {
+  animation-delay: 0.4s;
+}
+.animate-on-load.delay-450 {
+  animation-delay: 0.45s;
+}
+.animate-on-load.delay-500 {
+  animation-delay: 0.5s;
+}
+.animate-on-load.delay-550 {
+  animation-delay: 0.55s;
+}
+.animate-on-load.delay-600 {
+  animation-delay: 0.6s;
+}
+.animate-on-load.delay-650 {
+  animation-delay: 0.65s;
+}
+.animate-on-load.delay-700 {
+  animation-delay: 0.7s;
+}
+.animate-on-load.delay-750 {
+  animation-delay: 0.75s;
+}
+.animate-on-load.delay-800 {
+  animation-delay: 0.8s;
+}
+.animate-on-load.delay-850 {
+  animation-delay: 0.85s;
+}
+.animate-on-load.delay-900 {
+  animation-delay: 0.9s;
+}
+.animate-on-load.delay-950 {
+  animation-delay: 0.95s;
+}
+.animate-on-load.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* ---------- Section Reveal ---------- */
+
+.has-reveal .section {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.has-reveal .section.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---------- Motion preferences ---------- */
@@ -1486,5 +1526,16 @@ textarea:focus-within,
   .has-reveal [data-reveal].is-active {
     opacity: 1;
     transform: none;
+  }
+
+  /* Entrance animations: skip initial hidden state and delays. */
+  .animate-on-load,
+  .reveal-element,
+  .reveal-element.animated,
+  .reveal-element.active {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
