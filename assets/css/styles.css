@@ -1016,6 +1016,7 @@ textarea:focus-within,
 }
 
 .project-card__number {
+  opacity: 60%;
   position: absolute;
   top: 0.625rem;
   left: 0.875rem;
